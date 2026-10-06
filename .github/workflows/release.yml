@@ -19,8 +19,8 @@ jobs:
           NAME="mbt-ufs-$VER"
           mkdir -p "stage/$NAME"
           cp -R plugin.toml init.lua README.md "stage/$NAME/"
-          [ -f LICENSE ] && cp LICENSE "stage/$NAME/"
-          [ -d lua ] && cp -R lua "stage/$NAME/"
+          if [ -f LICENSE ]; then cp LICENSE "stage/$NAME/"; fi
+          if [ -d lua ]; then cp -R lua "stage/$NAME/"; fi
           tar -C stage -czf "$NAME-plugin.tar.gz" "$NAME"
           tar -tzf "$NAME-plugin.tar.gz"
       - name: Publish
