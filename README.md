@@ -33,5 +33,5 @@ that.
 ## Releasing
 
 A tag `vX.Y.Z` builds `mbt-ufs-X.Y.Z-plugin.tar.gz` (`plugin.toml`,
-`init.lua`, `lua/`, this README and the licence) and attaches it to the
+`init.lua`, `lua/`, this README and a LICENSE) and attaches it to the
 GitHub release, where mbt looks for it.
