@@ -1,0 +1,32 @@
+# A tag vX.Y.Z publishes mbt-ufs-X.Y.Z-plugin.tar.gz -- the asset mbt 3
+# resolves [plugins] "mvslovers/mbt-ufs" against.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Package
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          NAME="mbt-ufs-$VER"
+          mkdir -p "stage/$NAME"
+          cp -R plugin.toml init.lua README.md LICENSE "stage/$NAME/"
+          [ -d lua ] && cp -R lua "stage/$NAME/"
+          tar -C stage -czf "$NAME-plugin.tar.gz" "$NAME"
+          tar -tzf "$NAME-plugin.tar.gz"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="$GITHUB_REF_NAME"
+          PRE=""
+          case "$TAG" in *-*) PRE="--prerelease" ;; esac
+          gh release create "$TAG" $PRE --title "mbt-ufs ${TAG#v}" --generate-notes "mbt-ufs-${TAG#v}-plugin.tar.gz"

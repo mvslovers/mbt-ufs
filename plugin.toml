@@ -1,0 +1,3 @@
+# mbt-ufs: UFS370 disk images for mbt 3 projects
+api  = 1                   # the mbt Lua API this plugin is written for
+exec = ["ufsd-utils"]      # the only program it runs
