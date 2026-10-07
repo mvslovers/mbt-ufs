@@ -30,4 +30,4 @@ jobs:
           TAG="$GITHUB_REF_NAME"
           PRE=""
           case "$TAG" in *-*) PRE="--prerelease" ;; esac
-          gh release create "$TAG" $PRE --title "mbt-ufs ${TAG#v}" --generate-notes "mbt-ufs-${TAG#v}-plugin.tar.gz"
+          gh release create "$TAG" $PRE --title "$TAG" --generate-notes "mbt-ufs-${TAG#v}-plugin.tar.gz"
