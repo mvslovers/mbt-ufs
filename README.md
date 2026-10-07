@@ -103,3 +103,7 @@ A tag `vX.Y.Z` builds `mbt-ufs-X.Y.Z-plugin.tar.gz` (`plugin.toml`,
 `init.lua`, `lua/` if present, this README and a LICENSE if present) and
 attaches it to the GitHub release. That asset is what mbt resolves
 `[plugins] "mvslovers/mbt-ufs"` against.
+
+## License
+
+MIT -- see [LICENSE](LICENSE).
